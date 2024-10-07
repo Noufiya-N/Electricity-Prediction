@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Electricity Price Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="consumption">Electricity Consumption (kWh):</label>
+        <input type="number" name="consumption" step="any" required><br><br>
+        
+        <label for="hours">Hours:</label>
+        <input type="number" name="hours" step="any" required><br><br>
+
+        <label for="appliances">Number of Appliances:</label>
+        <input type="number" name="appliances" step="any" required><br><br>
+        
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if prediction_text %}
+        <h2>{{ prediction_text }}</h2>
+    {% endif %}
+</body>
+</html>
